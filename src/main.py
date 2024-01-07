@@ -9,7 +9,7 @@ async def websocket_connection(websocket):
     print(f"joined player with room expected color {expected_color}")
     await room.start_game()
     async for msg in websocket:
-        pass
+        await room.msg(msg, color)
 
 
 async def main():

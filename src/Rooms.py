@@ -41,8 +41,7 @@ class Room:
         print(self.to_json(response))
 
         for color, player in self.__players.items():
-            print(color)
-            print(self.to_json(response.for_player(color)))
+            self.to_json(response.for_player(color))
 
             await player.send(self.to_json(response.for_player(color)))
 
@@ -51,6 +50,7 @@ class Room:
             return
 
         response = self.__board.perform_option(msg)
+        print(response)
 
         for color, player in self.__players.items():
             await player.send(self.to_json(response.for_player(color)))

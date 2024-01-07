@@ -46,6 +46,7 @@ class JackalBoard:
         if next_move:  # если ход переходит к следующему игроку
             self.current_player = (self.current_player + 1) % self.max_players
             options.extend(self.__get_start_options_for_player(self.current_player))
+            actions.append(JackalActionPlayerMove(self.current_player))
         self.options.extend(options)
         return JackalBoardResponse(options, actions)
 
@@ -74,7 +75,7 @@ class JackalBoard:
         return JackalActionOpenCard(
             frame=card.frame,
             rotation=card.rotation,
-            open_position=position
+            position=position
         )
 
     def __create_start_stuff_for_player(self, player_id: int, direction: Vector2i) -> [JackalActionsBase]:

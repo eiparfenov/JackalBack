@@ -50,21 +50,28 @@ class JackalActionMoveShip(JackalActionsBase):
         super().__init__()
         self.type = "move_ship"
         self.ship_id = ship_id
-        self.move_position = move_position
+        self.position = move_position
 
 
 class JackalActionMovePirate(JackalActionsBase):
     def __init__(self, pirate_id: str, move_position: Vector2i):
         super().__init__()
-        self.move_position = move_position
+        self.position = move_position
         self.pirate_id = pirate_id
         self.type = "move_pirate"
 
 
 class JackalActionOpenCard(JackalActionsBase):
-    def __init__(self, frame: int, rotation: int, open_position: Vector2i):
+    def __init__(self, frame: int, rotation: int, position: Vector2i):
         super().__init__()
-        self.open_position = open_position
+        self.position = position
         self.rotation = rotation
         self.frame = frame
         self.type = "open_card"
+
+
+class JackalActionPlayerMove(JackalActionsBase):
+    def __init__(self, player):
+        super().__init__()
+        self.type = "player_move"
+        self.player = player
